@@ -1,0 +1,126 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+/* tag selectors */
+
+body {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: system-ui;
+}
+
+nav {
+    display: flex;
+    position: relative;
+}
+
+nav > div {
+    position: fixed;
+    margin-left: 12vmin;
+    height: 100%;
+    width: 38.5vmin;
+    background-color: #ffffff;
+    font-size: 2.8vmin;
+    font-weight: thin;
+    border-right: 0.1vmin solid rgb(119, 119, 119, 0.2);
+}
+
+div > img {
+    width: 3.5vmin;
+}
+
+a {
+    color: #3c3c3c;
+    cursor: pointer;
+}
+
+a:hover {
+    color: #1c9bef;
+}
+
+/* class selectors */
+
+.sidebar {
+    margin-bottom: 4.5vmin; 
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+
+.alignment {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-sidebar {
+    position: fixed;
+}
+
+.profile-container {
+    margin-top: 3vmin;
+    margin-left: 1vmin;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: 1fr 3fr 1fr;
+    gap: 2vmin;
+}
+
+.sidebar-name {
+    color: #3c3c3c;
+    font-size: 2vmin;
+    font-weight: 700;
+}
+
+.sidebar-handle {
+    color: #3c3c3c;
+    font-size: 2vmin;
+}
+
+/* id selectors */
+
+#logo {
+    margin-top: 10vmin;
+    color: #1c9bef;
+    width: 4vmin;
+    cursor: pointer;
+}
+
+#logo:hover {
+    opacity: 0.8;
+}
+
+#twt-btn {
+    margin-left: 0.5vmin;
+    background-color: #1c9bef;
+    color: #ffffff;
+    height: 7vmin;
+    width: 32vmin;
+    text-align: center;
+    font-size: 2.5vmin;
+    font-weight: 700;
+    border-style: none;
+    border-radius: 5vmin;
+    cursor: pointer;
+}
+
+#twt-btn:hover {
+    opacity: 0.8;
+}
+
+#sidebar-pic {
+    margin-top: 1.5vmin;
+    width: 8vmin;
+    border: 0.1vmin solid #777777;
+    border-radius: 50%;
+}
+
+#options {
+    margin-top: 1.25vmin;
+    margin-left: -3.5vmin;
+    width: 2.5vmin;
+}
