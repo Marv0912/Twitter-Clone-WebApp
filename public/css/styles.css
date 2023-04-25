@@ -1,0 +1,140 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+/* tag selectors */
+
+body {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: system-ui;
+}
+
+header {
+    position: fixed;
+}
+
+nav {
+    position: relative;
+    display: flex;
+}
+
+nav > div {
+    padding-left: 12vmin;
+    background-color: #ffffff;
+    height: 100vh;
+    width: 50vmin;
+    font-size: 2.8vmin;
+    font-weight: thin;
+    border-right: 0.1vmin solid rgb(119, 119, 119, 0.2);
+}
+
+div > img {
+    width: 3.5vmin;
+}
+
+a {
+    color: #3c3c3c;
+    cursor: pointer;
+}
+
+a:hover {
+    color: #1c9bef;
+}
+
+section {
+    margin-right: 16vmin;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+section > div {
+    background-color: #ffffff;
+    width: 83vmin;
+    border-right: 0.1vmin solid rgb(119, 119, 119, 0.2);
+}
+
+/* class selectors */
+
+.sidebar {
+    margin-bottom: 4.5vmin; 
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+
+.sidebar-align {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar-profile {
+    margin-top: 3vmin;
+    margin-left: 1vmin;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: 1fr 3fr 1fr;
+    gap: 2vmin;
+}
+
+.sidebar-name {
+    color: #3c3c3c;
+    font-size: 2vmin;
+    font-weight: 700;
+}
+
+.sidebar-handle {
+    color: #3c3c3c;
+    font-size: 2vmin;
+}
+
+/* id selectors */
+
+#logo {
+    margin-top: 10vmin;
+    color: #1c9bef;
+    width: 4vmin;
+    cursor: pointer;
+}
+
+#logo:hover {
+    opacity: 0.8;
+}
+
+#twt-btn {
+    margin-left: 1vmin;
+    background-color: #1c9bef;
+    color: #ffffff;
+    height: 7vmin;
+    width: 32vmin;
+    text-align: center;
+    font-size: 2.5vmin;
+    font-weight: 700;
+    border-style: none;
+    border-radius: 5vmin;
+    cursor: pointer;
+}
+
+#twt-btn:hover {
+    opacity: 0.8;
+}
+
+#sidebar-pic {
+    margin-top: 1.5vmin;
+    margin-left: 1.5vmin;
+    width: 7vmin;
+    border: 0.1vmin solid #777777;
+    border-radius: 50%;
+}
+
+#sidebar-options {
+    margin-top: 1.25vmin;
+    width: 2.5vmin;
+}
