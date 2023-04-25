@@ -23,10 +23,10 @@ nav {
 }
 
 nav > div {
-    padding-left: 10vmin;
+    padding-left: 12vmin;
+    background-color: #ffffff;
     height: 100vh;
     width: 50vmin;
-    background-color: #ffffff;
     font-size: 2.8vmin;
     font-weight: thin;
     border-right: 0.1vmin solid rgb(119, 119, 119, 0.2);
@@ -43,6 +43,21 @@ a {
 
 a:hover {
     color: #1c9bef;
+}
+
+section {
+    margin-right: 16vmin;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+section > div {
+    background-color: #ffffff;
+    width: 83vmin;
+    border-right: 0.1vmin solid rgb(119, 119, 119, 0.2);
 }
 
 /* class selectors */
@@ -94,7 +109,7 @@ a:hover {
 }
 
 #twt-btn {
-    margin-left: 0.5vmin;
+    margin-left: 1vmin;
     background-color: #1c9bef;
     color: #ffffff;
     height: 7vmin;
@@ -113,12 +128,13 @@ a:hover {
 
 #sidebar-pic {
     margin-top: 1.5vmin;
-    width: 8vmin;
+    margin-left: 1.5vmin;
+    width: 7vmin;
     border: 0.1vmin solid #777777;
     border-radius: 50%;
 }
 
-#options {
+#sidebar-options {
     margin-top: 1.25vmin;
     width: 2.5vmin;
 }
