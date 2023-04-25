@@ -13,16 +13,19 @@ body {
     font-family: system-ui;
 }
 
+header {
+    position: fixed;
+}
+
 nav {
-    display: flex;
     position: relative;
+    display: flex;
 }
 
 nav > div {
-    position: fixed;
-    margin-left: 12vmin;
-    height: 100%;
-    width: 38.5vmin;
+    padding-left: 10vmin;
+    height: 100vh;
+    width: 50vmin;
     background-color: #ffffff;
     font-size: 2.8vmin;
     font-weight: thin;
@@ -50,17 +53,13 @@ a:hover {
     grid-template-columns: 1fr 3fr;
 }
 
-.alignment {
+.sidebar-align {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.profile-sidebar {
-    position: fixed;
-}
-
-.profile-container {
+.sidebar-profile {
     margin-top: 3vmin;
     margin-left: 1vmin;
     display: grid;
