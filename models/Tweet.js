@@ -9,7 +9,7 @@ const tweetSchema = new Schema({
         required: true,
         validate: {
             validator: function(v) {
-            return v.length >= 1 && v.length <= 280;
+            return v.length >= 1 && v.length <= 200;
             },
             message: props => `Tweet text must be between 1 and 280 characters!`
         }
