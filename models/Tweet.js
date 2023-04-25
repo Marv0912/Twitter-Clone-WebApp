@@ -18,14 +18,17 @@ const tweetSchema = new Schema({
         type: String
     },
     tweetId: {type: mongoose.ObjectId},
-
     userId: {
         type: mongoose.ObjectId,
         required: true
     },
-    likes: {
-        type: [ObjectId]
-    }
+    likes: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
+        }
+    ]   
 }, {timestamps: true})
+
 
 module.exports = mongoose.model('Tweet', tweetSchema)
