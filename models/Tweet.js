@@ -11,8 +11,11 @@ const tweetSchema = new Schema({
             validator: function(v) {
             return v.length >= 1 && v.length <= 200;
             },
-            message: props => `Tweet text must be between 1 and 280 characters!`
+            message: props => `Tweet text must be between 1 and 200 characters!`
         }
+    },
+    username: {
+        type: String
     },
     tweetId: {type: mongoose.ObjectId},
 
