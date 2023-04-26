@@ -131,6 +131,12 @@ a:hover {
     border-radius: 3vmin;
 }
 
+.login-heading {
+    margin-bottom: 7vmin;
+    color: #ffffff;
+    font-size: 4.5vmin;
+}
+
 .login-info {
     margin-bottom: 3vmin;
     background-color: #101010;
