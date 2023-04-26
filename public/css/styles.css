@@ -31,12 +31,6 @@ div > img {
     width: 3.5vmin;
 }
 
-h2 {
-    margin-bottom: 7vmin;
-    color: #ffffff;
-    font-size: 4.5vmin;
-}
-
 a {
     color: #3c3c3c;
     text-decoration: none;
@@ -131,7 +125,7 @@ a:hover {
     border-radius: 3vmin;
 }
 
-.login-heading {
+.login-title {
     margin-bottom: 7vmin;
     color: #ffffff;
     font-size: 4.5vmin;
