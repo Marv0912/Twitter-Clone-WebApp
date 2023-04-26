@@ -1,10 +1,8 @@
+const express = require('express'); 
+const router = express.Router(); 
 const tweet = require('./models/tweet'); // Import the Mongoose model for tweets
 const user = require('./models/user'); // Import the Mongoose model for users
 const userIds = [...following, user._id]; // Include user's ID to the list of users ID
-const express = require('express'); // Import Express
-const router = express.Router(); // Create a new router object
-const ejs = require('ejs'); // Import EJS
-const { log } = require('console');
 
 const displayTweets = async (req, res) => {
     try {
@@ -58,8 +56,63 @@ const tweetLikes = async (req, res) => {
     }
 }
 
+// TODO: Create followUser & unfollowUser
+const followUser = async (req, res) => {
+    try {
+        if (!req.user) {
+            return res.status(401).send('You must be logged in to unfollow users');
+        }
+    } catch {
+        const userIdToFollow = req.params.userId;
+
+        const user = await User.findByIdAndUpdate(
+            req.user._id,
+            //unlike push, addToSet prevents duplicates
+            { $addToSet: { following: userIdToFollow } },
+            { new: true }
+        );
+    }
+}
+const unfollowUser = async (req, res) =>  {
+    try {
+        if (!req.user) {
+            return res.status(401).send('You must be logged in to unfollow users');
+        }
+    } catch {
+        const userIdToUnfollow = req.params.userId;
+
+        const user = await User.findByIdAndUpdate(
+            req.user._id,
+            //unlike push, addToSet prevents duplicates
+            { $pull: { following: userIdToUnfollow } },
+            { new: true }
+        );
+    }
+}
+
+// TODO: Retweet function
+const retweet = async (req, res) =>  {
+    try {
+    } catch {
+
+    }
+}
+
+// TODO Reply to tweet function
+const replyToTweet = async (req, res) =>  {
+    try {
+
+    } catch {
+
+    }
+}
+
 module.exports = {
     displayTweets,
     createTweet,
     tweetLikes,
+    followUser, 
+    unfollowUser,
+    retweet,
+    replyToTweet,
 }
