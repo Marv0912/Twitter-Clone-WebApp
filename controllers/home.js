@@ -93,10 +93,37 @@ const unfollowUser = async (req, res) =>  {
 // TODO: Retweet function
 const retweet = async (req, res) =>  {
     try {
-    } catch {
+        const tweetIdToRetweet = req.params.tweetId;
 
+        // Check if tweet exists
+        const tweet = await Tweet.findById(tweetIdToRetweet);
+        if (!tweet) {
+            return res.status(404).send('Tweet not found');
+        }
+    
+        // Add tweetIdToRetweet to authenticated user's retweets array
+        const user = await User.findByIdAndUpdate(
+            req.user._id,
+
+            // does not add duplicate like push
+            { $addToSet: { retweets: tweetIdToRetweet } },
+            { new: true }
+        );
+    
+        // Increase retweets count for the original tweet
+        tweet.retweetsCount += 1;
+        await tweet.save();
+    
+        // res.redirect(`/tweets/${tweetIdToRetweet}`);
+        } catch (err) {
+        console.error(err);
+        res.status(500).send('Server error');
+        }
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Server error;')
     }
-}
+
 
 // TODO Reply to tweet function
 const replyToTweet = async (req, res) =>  {
