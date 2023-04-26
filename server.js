@@ -1,7 +1,7 @@
 // require dependencies
 const express = require('express');
 const logger = require('morgan');
-
+const homeRoutes = require('./routes/home');
 const indexRoutes = require('./routes/index');
 
 // initialize express application
@@ -15,6 +15,7 @@ app.use(logger('dev'));
 app.use(express.static('public'));
 
 // mount routes
+app.use('/home', homeRoutes)
 app.use('/', indexRoutes);
 
 // tell the application to listen for requests

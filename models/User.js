@@ -1,15 +1,13 @@
+const { ObjectId } = require('bson');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // User Schema
 const userSchema = new Schema({
-    name: {
+    username: {
         type: String,
-        required: true
-    },
-    lastName: {
-        type: String,
-        required: true
+        required: true,
+        unique: true
     },
     userId: {
         type: mongoose.ObjectId,
@@ -33,7 +31,10 @@ const userSchema = new Schema({
     followers: {
         type: [mongoose.ObjectId]
     },
+    following: {
+        type: [mongoose.ObjectId]
+    },
 
 }, { timestamps: true})
 
-module.exports = mongoose.model('UserInfo', userSchema)
+module.exports = mongoose.model('User', userSchema)
