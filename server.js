@@ -1,6 +1,7 @@
 // require dependencies
 const express = require('express');
 const logger = require('morgan');
+const mongoose = require('mongoose');
 const homeRoutes = require('./routes/home');
 const indexRoutes = require('./routes/index');
 
