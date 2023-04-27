@@ -2,17 +2,15 @@
     <html lang="en">
         <%- include('./partials/head') %>
     <body>
-        <%- include('./partials/header') %>
-
         <main>
             <section>
                 <div class="login-align">
                     <div class="login-container">
                         <img id="login-logo" src="css/images/twitter-logo.svg" alt="bird-logo">
                         <h2 class="login-title">Sign in to Twitter</h2>
-                        <form>
+                        <form action="/register" method="POST">
                             <input class="login-info" type="text" placeholder="Enter your username" name="username" >
-                            <input class="login-info" type="text" placeholder="Enter your password" name="password">
+                            <input class="login-info" type="password" placeholder="Enter your password" name="password">
                             <button id="login-btn1" type="submit">Register</button>
                         </form>
                     </div>

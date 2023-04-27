@@ -2,8 +2,9 @@ const User = require('../models/User');
 
 const handleRegistration = async (req, res) => {
     try {
-        // destructuring
-        const { username, password } = req.body;
+        console.log(req.body);
+        const username = req.body.username;
+        const password = req.body.password;
 
         // Check if a user with the same username already exists in the database
         const existingUser = await User.findOne({ username });
