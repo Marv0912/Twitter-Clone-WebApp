@@ -26,7 +26,7 @@ const createTweet = async (req, res) => {
         const tweet = new Tweet({ tweetText, username: req.user.username, userId: req.user._id });
         const newTweet = await tweet.save();
         // tweet created
-        res.status(201).json(newTweet); res.redirect('/home'); // goes to home page to see user tweet
+        res.status(201).json(newTweet); 
     } catch (err) {
         console.error(err);
         res.status(500).send('Server error');

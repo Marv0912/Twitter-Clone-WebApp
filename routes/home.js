@@ -8,10 +8,10 @@ router.get('/', (req, res) => {
 });
 
 
+
 //router.get('/home', homeController.displayTweets);
 
 // TODO: remember to place path and to put route on server.js
-// router.post('/??', homeController.createTweet);
 // router.post('/??', homeController.tweetLikes);
 
 module.exports = router;
