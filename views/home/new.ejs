@@ -1,26 +1,47 @@
 <!DOCTYPE html>
-    <html lang="en">
-        <%- include('./partials/head') %>
+<html lang="en">
+<%- include('./partials/head') %>
+
     <body>
         <%- include('./partials/header') %>
 
-        <main>
-            <section>
-                <div class="post-align">
-                    <div class="post-container">
-                        <form  action="/tweets" method="POST">
-                            <input id="tweet-text" class="post-text" type="text" placeholder="What's happening?">
-                            <div class="post-realign">
-                                <span class="chara-count">240</span>
-                                <button id="post-btn" type="submit">Tweet</button>
-                            </div>
-                        </form>
+            <main>
+                <section>
+                    <div class="post-align">
+                        <div class="post-container">
+                            <form action="/tweets" method="POST">
+                                <input id="tweet-text" class="post-text" type="text" placeholder="What's happening?">
+                                <div class="post-realign">
+                                    <span class="chara-count">240</span>
+                                    <button id="post-btn" type="submit">Tweet</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                </div>
-            </section>
-                    
-        </main>
+                </section>
 
-        <%- include('./partials/footer') %>
+                <script>
+                    const tweetBtn = document.querySelector('#post-btn');
+                    tweetBtn.addEventListener('click', () => {
+                        const tweetText = document.querySelector('#tweet-text').value;
+                        fetch('/tweets', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ tweetText })
+                        })
+                            .then(response => response.json())
+                            .then(data => {
+                                // Update the UI with the new tweet
+                                console.log(data);
+                            })
+                            .catch(error => console.error(error));
+                    });
+                </script>
+            </main>
+
+            <%- include('./partials/footer') %>
     </body>
+
 </html>

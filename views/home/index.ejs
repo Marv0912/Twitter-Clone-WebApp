@@ -26,25 +26,25 @@
                         </div>
                     </div>
                 </section>
-                <script>
-                    const tweetBtn = document.querySelector('#tweet-btn');
-                    tweetBtn.addEventListener('click', () => {
-                        const tweetText = document.querySelector('#tweet-text').value;
-                        fetch('/tweets', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify({ tweetText })
-                        })
-                            .then(response => response.json())
-                            .then(data => {
-                                // Update the UI with the new tweet
-                                console.log(data);
-                            })
-                            .catch(error => console.error(error));
-                    });
-                </script>
+                <section>
+                    <div class="tweets-container">
+                        <% tweets.forEach(tweet=> { %>
+                            <div class="tweet">
+                                <span class="tweet-username">
+                                    <%= tweet.username %>
+                                </span>
+                                <p class="tweet-text">
+                                    <%= tweet.tweetText %>
+                                </p>
+                                <div class="tweet-actions">
+                                    <button class="like-btn">Like</button>
+                                    <button class="retweet-btn">Retweet</button>
+                                    <button class="reply-btn">Reply</button>
+                                </div>
+                            </div>
+                            <% }) %>
+                    </div>
+                </section>
             </main>
 
             <%- include('../partials/footer') %>

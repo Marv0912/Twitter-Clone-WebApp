@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
     res.render('home/index');
 });
 
-
+router.post('/tweets', tweetController.createTweet);
 
 //router.get('/home', homeController.displayTweets);
 
