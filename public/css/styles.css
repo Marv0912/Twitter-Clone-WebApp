@@ -193,6 +193,29 @@ a:hover {
     color: #667581;
 }
 
+.error-align {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 3.5vmin;
+}
+
+.error-container {
+    margin-top: 22.5vmin;
+    margin-right: 16vmin;
+    z-index: 9;
+}
+
+.error-message1 {
+    margin-bottom: 1.5vmin;
+}
+
+.error-message2 {
+    margin-bottom: 4.5vmin;
+}
+
 /* id selectors */
 
 #logo {
@@ -259,6 +282,11 @@ a:hover {
 
 #post-btn:hover {
     opacity: 0.8;
+}
+
+#error-img {
+    margin-bottom: 1.5vmin;
+    width: 60vmin;
 }
 
 /* animation  */
