@@ -1,3 +1,5 @@
+const User = require('../models/User');
+
 const handleRegistration = async (req, res) => {
     try {
         // destructuring
