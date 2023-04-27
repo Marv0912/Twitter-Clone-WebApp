@@ -1,15 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const tweet = require('./models/tweet'); // Import the Mongoose model for tweets
-const user = require('./models/user'); // Import the Mongoose model for users
-const userIds = [...following, user._id]; // Include user's ID to the list of users ID
+const tweet = require('../models/Tweet'); // Import the Mongoose model for tweets
+const user = require('../models/User'); // Import the Mongoose model for users
+
 
 const displayTweets = async (req, res) => {
     try {
         const user = req.user; // Get the currently logged-in user from the request object (if available)
         const following = user.following; // Get the user's list of following users
         const tweets = await tweet.find({ userId: { $in: following } }).populate('userId').sort({ createdAt: -1 }); // Find tweets posted by users the current user is following, sort by most recent
-
+        const userIds = [...following, user._id]; // Include user's ID to the list of users ID
         // Render the home page EJS template and pass in the tweets and user objects
         res.render('home', { tweets, user });
     } catch (err) {
