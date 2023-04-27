@@ -23,11 +23,10 @@ const createTweet = async (req, res) => {
         //destructuring, you can use the variable tweetText to search for it instead
         // of utilizing req.body.tweetText whenever needed
         const { tweetText } = req.body;
-        const tweet = new Tweet({ tweetText, userId: req.user._id });
-
-        await tweet.save(); // saves the tweet document in the database
-
-        res.redirect('/home'); // goes to home page to see user tweet
+        const tweet = new Tweet({ tweetText, username: req.user.username, userId: req.user._id });
+        const newTweet = await tweet.save();
+        // tweet created
+        res.status(201).json(newTweet); res.redirect('/home'); // goes to home page to see user tweet
     } catch (err) {
         console.error(err);
         res.status(500).send('Server error');
