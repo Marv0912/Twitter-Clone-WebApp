@@ -14,6 +14,7 @@ app.set('view engine', 'ejs');
 app.use(logger('dev'));
 app.use(express.static('public'));
 
+app.use(express.urlencoded({ extended: true }));
 // mount routes
 app.use('/home', homeRoutes)
 app.use('/', indexRoutes);
