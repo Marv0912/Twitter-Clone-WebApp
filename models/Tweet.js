@@ -9,9 +9,9 @@ const tweetSchema = new Schema({
         required: true,
         validate: {
             validator: function(v) {
-            return v.length >= 1 && v.length <= 200;
+            return v.length >= 1 && v.length <= 280;
             },
-            message: props => `Tweet text must be between 1 and 200 characters!`
+            message: props => `Tweet text must be between 1 and 280 characters!`
         }
     },
     username: {
@@ -27,7 +27,13 @@ const tweetSchema = new Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User'
         }
-    ]   
+    ],
+    retweets: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
+        }
+    ]
 }, {timestamps: true})
 
 
