@@ -1,7 +1,6 @@
 // require dependencies
 const express = require('express');
 const logger = require('morgan');
-const mongoose = require('mongoose');
 const homeRoutes = require('./routes/home');
 const indexRoutes = require('./routes/index');
 
@@ -15,7 +14,6 @@ app.set('view engine', 'ejs');
 app.use(logger('dev'));
 app.use(express.static('public'));
 
-app.use(express.urlencoded({ extended: true }));
 // mount routes
 app.use('/home', homeRoutes)
 app.use('/', indexRoutes);
