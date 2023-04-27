@@ -11,11 +11,9 @@ const userSchema = new Schema({
     },
     userId: {
         type: mongoose.ObjectId,
-        required: true
     },
     email: {
         type: String,
-        required: true,
         unique: true
     },
     password: {
