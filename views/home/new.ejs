@@ -1,32 +1,25 @@
 <!DOCTYPE html>
     <html lang="en">
-        <%- include('../partials/head') %>
+        <%- include('./partials/head') %>
     <body>
-        <%- include('../partials/header') %>
+        <%- include('./partials/header') %>
 
         <main>
             <section>
-                <div class="main-layout">
-                    <div></div>
-                    <div>
-                        <div class="topbar-home">
-                            <div class="topbar-align">
-                                <div class="topbar-title">
-                                    <h2>Home</h2>
-                                </div>
-                                <div class="topbar-nav">
-                                    <a class="topbar-link" href="">For you</a>
-                                    <a class="topbar-link" href="">Following</a>
-                                    <a class="topbar-link" href="">Entertainment Writers</a>
-                                    <a class="topbar-link" href="">US Celebrities - Movies</a>
-                                </div>
+                <div class="post-align">
+                    <div class="post-container">
+                        <form>
+                            <input class="post-text" type="text" placeholder="What's happening?">
+                            <div class="post-realign">
+                                <span class="chara-count">140</span>
+                                <button id="post-btn" type="submit">Tweet</button>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </section>
         </main>
 
-        <%- include('../partials/footer') %>
+        <%- include('./partials/footer') %>
     </body>
 </html>
