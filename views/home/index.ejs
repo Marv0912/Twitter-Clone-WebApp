@@ -1,53 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('../partials/head') %>
-
     <body>
         <%- include('../partials/header') %>
-
-            <main>
-                <section>
-                    <div class="main-layout">
-                        <div></div>
-                        <div>
-                            <div class="topbar-home">
-                                <div class="topbar-align">
-                                    <div class="topbar-title">
-                                        <h2>Home</h2>
-                                    </div>
-                                    <div class="topbar-nav">
-                                        <a class="topbar-link" href="">For you</a>
-                                        <a class="topbar-link" href="">Following</a>
-                                        <a class="topbar-link" href="">Entertainment Writers</a>
-                                        <a class="topbar-link" href="">US Celebrities - Movies</a>
-                                    </div>
+        <main>
+            <section>
+                <div class="main-layout">
+                    <div></div>
+                    <div>
+                        <div class="topbar-home">
+                            <div class="topbar-align">
+                                <div class="topbar-title">
+                                    <h2>Home</h2>
+                                </div>
+                                <div class="topbar-nav">
+                                    <a class="topbar-link" href="">For you</a>
+                                    <a class="topbar-link" href="">Following</a>
+                                    <a class="topbar-link" href="">Entertainment Writers</a>
+                                    <a class="topbar-link" href="">US Celebrities - Movies</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </section>
-                <script>
-                    const tweetBtn = document.querySelector('#tweet-btn');
-                    tweetBtn.addEventListener('click', () => {
-                        const tweetText = document.querySelector('#tweet-text').value;
-                        fetch('/tweets', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify({ tweetText })
+                </div>
+            </section>
+            <script>
+                const tweetBtn = document.querySelector('#tweet-btn');
+                tweetBtn.addEventListener('click', () => {
+                    const tweetText = document.querySelector('#tweet-text').value;
+                    fetch('/tweets', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ tweetText })
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            // Update the UI with the new tweet
+                            console.log(data);
                         })
-                            .then(response => response.json())
-                            .then(data => {
-                                // Update the UI with the new tweet
-                                console.log(data);
-                            })
-                            .catch(error => console.error(error));
-                    });
-                </script>
-            </main>
-
-            <%- include('../partials/footer') %>
+                        .catch(error => console.error(error));
+                });
+            </script>
+        </main>
+        <%- include('../partials/footer') %>
     </body>
-
 </html>
