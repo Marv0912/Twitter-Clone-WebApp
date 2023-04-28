@@ -18,7 +18,7 @@ nav {
     color: #3c3c3c;
 }
 
-nav > div {
+nav>div {
     padding-left: 12vmin;
     height: 100vh;
     width: 50vmin;
@@ -27,7 +27,7 @@ nav > div {
     border-right: 0.1vmin solid rgb(119, 119, 119, 0.2);
 }
 
-div > img {
+div>img {
     width: 3.5vmin;
 }
 
@@ -48,7 +48,7 @@ a:hover {
 }
 
 .sidebar-layout {
-    margin-bottom: 4.5vmin; 
+    margin-bottom: 4.5vmin;
     display: grid;
     grid-template-columns: 1fr 3fr;
 }
@@ -157,7 +157,7 @@ a:hover {
     width: 69.5vmin;
     border-radius: 3vmin;
     z-index: 9;
-    box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
 }
 
 .post-text {
@@ -214,6 +214,10 @@ a:hover {
 
 .error-message2 {
     margin-bottom: 4.5vmin;
+}
+
+.logout-align {
+    position: fixed;
 }
 
 /* id selectors */
@@ -289,10 +293,25 @@ a:hover {
     width: 60vmin;
 }
 
+#logout-btn {
+    margin-top: 20vmin;
+    margin-left: 0.5vmin;
+    background-color: #eff3f4;
+    color: #000000;
+    height: 7vmin;
+    width: 30vmin;
+    text-align: center;
+    font-size: 2.5vmin;
+    font-weight: 700;
+    border-style: none;
+    border-radius: 5vmin;
+    cursor: pointer;
+}
+
 /* animation  */
 
 @keyframes fade-in {
     0% {
-      opacity: 0;
+        opacity: 0;
     }
 }

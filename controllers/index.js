@@ -1,38 +1,66 @@
 const express = require('express');
 const router = express.Router();
+const passport = require('passport');
 const User = require('../models/User');
 
-const handleRegistration = async (req, res) => {
-    try {
-        console.log(req.body);
+module.exports = {
+    handleRegistration: async (req, res) => {
         const username = req.body.username;
         const password = req.body.password;
-
+    
         // Check if a user with the same username already exists in the database
         const existingUser = await User.findOne({ username });
-
+    
         if (existingUser) {
             // If the user already exists, send an error message to the client
             return res.status(400).send('Username already taken');
         }
-
-        // Create a new user object using the User model
-        const newUser = new User({
-            username,
-            password
+    
+        // Use the 'register' method provided by passport-local-mongoose to create a new user
+        User.register(new User({ username, password }), password, (err, user) => {
+            if (err) {
+                console.error(err);
+                return res.status(500).send('Error registering user');
+            }
+    
+            req.login(user, err => {
+                if (err) {
+                    console.error(err);
+                    return res.status(500).send('Error logging in after registration');
+                }
+                res.redirect('/users/home');
+            });
         });
+    },
+    login: (req, res, next) => {
+        passport.authenticate('local', (err, user, info) => {
+            if (err) {
+                console.error('Error:', err);
+                return next(err);
+            }
+    
+            if (!user) {
+                console.error('User not found:', user);
+                console.error('Info:', info);
+                return res.redirect('/users/login');
+            }
+    
+            req.logIn(user, (err) => {
+                if (err) {
+                    console.error('Login error:', err);
+                    return next(err);
+                }
+    
+                return res.redirect('/users/home');
+            });
+        })(req, res, next);
+    },
 
-        // Save the new user to the database
-        await newUser.save();
-
-        // Redirect the user to the home page after successful registration
-        res.redirect('/home');
-    } catch (err) {
-        console.error(err);
-        res.status(500).send('Server error');
+    logout: (req, res) => {
+        req.logout();
+        res.redirect('/users/login');
     }
+    // Redirect the user to the home page after successful registration
+    //res.redirect(`home/index/?user=${username}`);//, {tweets}
 };
 
-module.exports = {
-    handleRegistration,
-}

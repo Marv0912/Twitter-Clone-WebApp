@@ -5,13 +5,27 @@ const user = require('../models/User'); // Import the Mongoose model for users
 
 const displayTweets = async (req, res) => {
     try {
-        const user = req.user; // Get the currently logged-in user from the request object (if available)
-        const following = user.following; // Get the user's list of following users
-        const tweets = await tweet.find({ userId: { $in: following } }).populate('userId').sort({ createdAt: -1 }); // Find tweets posted by users the current user is following, sort by most recent
-        const userIds = [...user.following, user._id]; // Include user's ID to the list of users ID
-        
+        // console.log(req.user);
+        // tweet.find({}).then(function(allTweets) {
+        //     res.render('home/index', 
+        //     { tweets: allTweets})
+        // });
+        // if (!user) {
+            //     // If the user is not logged in, redirect to the login page
+            //     return res.redirect('/');
+            //}
+            
+        // const user = req.user; // Get the currently logged-in user from the request object (if available)
+        //const following = user.following; // Get the user's list of following users
+        // const tweets = await tweet
+        //     .find({ userId: { $in: following } })
+        //     .populate('userId')
+        //     .sort({ createdAt: -1 }); // Find tweets posted by users the current user is following, sort by most recent
+        // const userIds = [...user.following, user._id]; // Include user's ID to the list of users ID
+
         // Render the home page EJS template and pass in the tweets and user objects
-        res.render('home', { tweets, user });
+        res.render('home/index', { tweets: 'tweet1' });
+
     } catch (err) {
         console.error(err);
         res.status(500).send('Server error');
@@ -23,10 +37,12 @@ const createTweet = async (req, res) => {
         //destructuring, you can use the variable tweetText to search for it instead
         // of utilizing req.body.tweetText whenever needed
         const { tweetText } = req.body;
-        const tweet = new Tweet({ tweetText, username: req.user.username, userId: req.user._id });
-        const newTweet = await tweet.save();
+        const author = req.user.id;
+
+        const newtweet = new Tweet({ tweetText, author});
+        await newTweet.save();
         // tweet created
-        res.status(201).json(newTweet); 
+        res.redirect('/home');
     } catch (err) {
         console.error(err);
         res.status(500).send('Server error');
@@ -35,20 +51,21 @@ const createTweet = async (req, res) => {
 
 const tweetLikes = async (req, res) => {
     try {
-        const tweet = await Tweet.findbyId(req.params.tweetId); //Finds the tweet to like
+        const tweetId = req.params._id;
+        const tweet = await Tweet.findbyId(tweetId); //Finds the tweet to like
         const user = req.user;
 
         if (tweet.likes.includes(user._id)) {
             // removes like if user already liked tweet
-            tweet.like.pull(user._id);
+            tweet.likes.pull(user._id);
         } else {
             // adds like if user has not liked tweet
-            tweet.like.push(user._id);
+            tweet.likes.push(user._id);
         }
 
         await tweet.save();
 
-        //res.redirect(`/tweets/${tweet._id}`)
+        res.redirect('/home');
     } catch (err) {
         console.error(err);
         res.status(500).send('Server error');

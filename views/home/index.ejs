@@ -18,8 +18,6 @@
                                     <div class="topbar-nav">
                                         <a class="topbar-link" href="">For you</a>
                                         <a class="topbar-link" href="">Following</a>
-                                        <a class="topbar-link" href="">Entertainment Writers</a>
-                                        <a class="topbar-link" href="">US Celebrities - Movies</a>
                                     </div>
                                 </div>
                             </div>
@@ -31,11 +29,15 @@
                         <% tweets.forEach(tweet=> { %>
                             <div class="tweet">
                                 <span class="tweet-username">
-                                    <%= tweet.username %>
+                                    <%= tweet.author.username %>
                                 </span>
                                 <p class="tweet-text">
                                     <%= tweet.tweetText %>
                                 </p>
+                                <p class="tweet-like">
+                                    <%= tweet.like.length %> <%= tweet.likes.length === 1 ? 'like' : 'likes' %></p>
+                                </p>
+                                <a href="/tweets/<%= tweet._id %>/like">Like</a>
                                 <div class="tweet-actions">
                                     <button class="like-btn">Like</button>
                                     <button class="retweet-btn">Retweet</button>
