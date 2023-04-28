@@ -39,7 +39,7 @@ const createTweet = async (req, res) => {
         const { tweetText } = req.body;
         const author = req.user.id;
 
-        const newtweet = new Tweet({ tweetText, author});
+        const newTweet = new Tweet({ tweetText, author});
         await newTweet.save();
         // tweet created
         res.redirect('/home');
@@ -51,16 +51,16 @@ const createTweet = async (req, res) => {
 
 const tweetLikes = async (req, res) => {
     try {
-        const tweetId = req.params._id;
-        const tweet = await Tweet.findbyId(tweetId); //Finds the tweet to like
+        const tweetId = req.params.id;
+        const tweet = await Tweet.findById(tweetId); //Finds the tweet to like
         const user = req.user;
 
-        if (tweet.likes.includes(user._id)) {
+        if (tweet.likes.includes(user.id)) {
             // removes like if user already liked tweet
-            tweet.likes.pull(user._id);
+            tweet.likes.pull(user.id);
         } else {
             // adds like if user has not liked tweet
-            tweet.likes.push(user._id);
+            tweet.likes.push(user.id);
         }
 
         await tweet.save();
@@ -72,110 +72,110 @@ const tweetLikes = async (req, res) => {
     }
 }
 
-const followUser = async (req, res) => {
-    try {
-        if (!req.user) {
-            return res.status(401).send('You must be logged in to unfollow users');
-        }
-    } catch {
-        const userIdToFollow = req.params.userId;
+// const followUser = async (req, res) => {
+//     try {
+//         if (!req.user) {
+//             return res.status(401).send('You must be logged in to unfollow users');
+//         }
+//     } catch {
+//         const userIdToFollow = req.params.userId;
 
-        const user = await User.findByIdAndUpdate(
-            req.user._id,
-            //unlike push, addToSet prevents duplicates
-            { $addToSet: { following: userIdToFollow } },
-            { new: true }
-        );
-    }
-}
-const unfollowUser = async (req, res) => {
-    try {
-        if (!req.user) {
-            return res.status(401).send('You must be logged in to unfollow users');
-        }
-    } catch {
-        const userIdToUnfollow = req.params.userId;
+//         const user = await User.findByIdAndUpdate(
+//             req.user._id,
+//             //unlike push, addToSet prevents duplicates
+//             { $addToSet: { following: userIdToFollow } },
+//             { new: true }
+//         );
+//     }
+// }
+// const unfollowUser = async (req, res) => {
+//     try {
+//         if (!req.user) {
+//             return res.status(401).send('You must be logged in to unfollow users');
+//         }
+//     } catch {
+//         const userIdToUnfollow = req.params.userId;
 
-        const user = await User.findByIdAndUpdate(
-            req.user._id,
-            //unlike push, addToSet prevents duplicates
-            { $pull: { following: userIdToUnfollow } },
-            { new: true }
-        );
-    }
-}
+//         const user = await User.findByIdAndUpdate(
+//             req.user._id,
+//             //unlike push, addToSet prevents duplicates
+//             { $pull: { following: userIdToUnfollow } },
+//             { new: true }
+//         );
+//     }
+// }
 
-// TODO: Retweet function
-const retweet = async (req, res) => {
-    try {
-        const tweetIdToRetweet = req.params.tweetId;
+// // TODO: Retweet function
+// const retweet = async (req, res) => {
+//     try {
+//         const tweetIdToRetweet = req.params.tweetId;
 
-        // Check if tweet exists
-        const tweet = await Tweet.findById(tweetIdToRetweet);
-        if (!tweet) {
-            return res.status(404).send('Tweet not found');
-        }
+//         // Check if tweet exists
+//         const tweet = await Tweet.findById(tweetIdToRetweet);
+//         if (!tweet) {
+//             return res.status(404).send('Tweet not found');
+//         }
 
-        // Add tweetIdToRetweet to authenticated user's retweets array
-        const user = await User.findByIdAndUpdate(
-            req.user._id,
+//         // Add tweetIdToRetweet to authenticated user's retweets array
+//         const user = await User.findByIdAndUpdate(
+//             req.user._id,
 
-            // does not add duplicate like push
-            { $addToSet: { retweets: tweetIdToRetweet } },
-            { new: true }
-        );
+//             // does not add duplicate like push
+//             { $addToSet: { retweets: tweetIdToRetweet } },
+//             { new: true }
+//         );
 
-        // Increase retweets count for the original tweet
-        tweet.retweetsCount += 1;
-        await tweet.save();
+//         // Increase retweets count for the original tweet
+//         tweet.retweetsCount += 1;
+//         await tweet.save();
 
-        // res.redirect(`/tweets/${tweetIdToRetweet}`);
-    } catch (err) {
-        console.error(err);
-        res.status(500).send('Server error');
-    }
-}
+//         // res.redirect(`/tweets/${tweetIdToRetweet}`);
+//     } catch (err) {
+//         console.error(err);
+//         res.status(500).send('Server error');
+//     }
+// }
 
 
-// TODO Reply to tweet function
-const replyToTweet = async (req, res) => {
-    try {
-        const tweetId = req.params.tweetId;
-        const { replyText } = req.body;
+// // TODO Reply to tweet function
+// const replyToTweet = async (req, res) => {
+//     try {
+//         const tweetId = req.params.tweetId;
+//         const { replyText } = req.body;
 
-        // Find the tweet to reply to
-        const tweet = await Tweet.findById(tweetId);
-        if (!tweet) {
-            return res.status(404).send('Tweet not found');
-        }
+//         // Find the tweet to reply to
+//         const tweet = await Tweet.findById(tweetId);
+//         if (!tweet) {
+//             return res.status(404).send('Tweet not found');
+//         }
 
-        // Create the reply tweet
-        const replyTweet = new Tweet({
-            tweetText: replyText,
-            username: req.user.username,
-            userId: req.user._id,
-            replyToTweet: tweet._id
-        });
+//         // Create the reply tweet
+//         const replyTweet = new Tweet({
+//             tweetText: replyText,
+//             username: req.user.username,
+//             userId: req.user._id,
+//             replyToTweet: tweet._id
+//         });
 
-        // Save the reply tweet to the database
-        await replyTweet.save();
+//         // Save the reply tweet to the database
+//         await replyTweet.save();
 
-        // Add the reply tweet to the original tweet's replies array
-        tweet.replies.push(replyTweet._id);
-        await tweet.save();
+//         // Add the reply tweet to the original tweet's replies array
+//         tweet.replies.push(replyTweet._id);
+//         await tweet.save();
 
-        res.redirect('/home');
-    } catch {
+//         res.redirect('/home');
+//     } catch {
 
-    }
-}
+//     }
+// }
 
 module.exports = {
     displayTweets,
     createTweet,
     tweetLikes,
-    followUser,
-    unfollowUser,
-    retweet,
-    replyToTweet,
+    // followUser,
+    // unfollowUser,
+    // retweet,
+    // replyToTweet,
 }

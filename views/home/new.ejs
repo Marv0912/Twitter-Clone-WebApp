@@ -9,8 +9,9 @@
                 <section>
                     <div class="post-align">
                         <div class="post-container">
-                            <form action="/tweets/create" method="post">
-                                <input id="tweet-text" class="post-text" type="text" placeholder="What's happening?">
+                            <form action="/users/home/new" method="get">
+                                <input id="tweet-text" class="post-text" type="text" name="tweetText"
+                                    placeholder="What's happening?">
                                 <div class="post-realign">
                                     <span class="chara-count">240</span>
                                     <button id="post-btn" type="submit">Tweet</button>
@@ -20,11 +21,12 @@
                     </div>
                 </section>
 
-                <script>
-                    const tweetBtn = document.querySelector('#post-btn');
-                    tweetBtn.addEventListener('click', () => {
+                <!-- <script>
+                    const tweetBtn = document.querySelector('#twt-btn');
+                    tweetBtn.addEventListener('click', (event) => {
+                        event.preventDefault();
                         const tweetText = document.querySelector('#tweet-text').value;
-                        fetch('/tweets', {
+                        fetch('/tweets/create', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json'
@@ -38,7 +40,7 @@
                             })
                             .catch(error => console.error(error));
                     });
-                </script>
+                </script> -->
             </main>
 
             <%- include('./partials/footer') %>

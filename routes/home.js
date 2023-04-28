@@ -4,8 +4,13 @@ const homeController = require('../controllers/home');
 const homeRenderController = require('../controllers/homeRender');
 
 router.get('/', homeRenderController.renderHome);
-router.get('/create', homeController.createTweet);
-router.post('/:id/like', homeController.tweetLikes);
+
+router.get('/home/new', (req, res) => {
+    res.render('new');
+});
+
+router.get('/tweets/create', homeController.createTweet);
+router.post('/tweets/:id/like', homeController.tweetLikes);
 
 
 module.exports = router;
