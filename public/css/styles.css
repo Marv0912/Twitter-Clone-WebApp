@@ -151,6 +151,39 @@ a:hover {
     cursor: pointer;
 }
 
+.post-container {
+    height: 18.5vmin;
+    border-bottom: 0.1vmin solid rgb(119, 119, 119, 0.2);
+    z-index: 9;
+}
+
+.post-align {
+    margin-top: 15vmin;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.post-text {
+    margin-top: -5vmin;
+    margin-left: 9.5vmin;
+    background-color: #ffffff;
+    color: #667581;
+    height: 7vmin;
+    width: 70vmin;
+    font-size: 3vmin;
+    text-align: left;
+    border-radius: 1vmin;
+    overflow-wrap: break-word;
+    overflow: auto;
+}
+
+.post-text:focus {
+    outline-color: transparent;
+    outline-style: none;
+}
+
 .error-align {
     display: flex;
     flex-direction: column;
@@ -230,16 +263,46 @@ a:hover {
     outline-style: none;
 }
 
+#post-pic {
+    margin-top: 1.5vmin;
+    margin-left: 1vmin;
+    width: 6.5vmin;
+    border-radius: 50%;
+}
+
+#post-count {
+    margin-left: -16.75vmin;
+    color: #667581;
+}
+
+#post-btn {
+    margin-top: 2vmin;
+    margin-left: 68.5vmin;
+    background-color: #1c9bef;
+    color: #ffffff;
+    height: 5vmin;
+    width: 11vmin;
+    font-size: 2.25vmin;
+    font-weight: 700;
+    text-align: center;
+    border-style: none;
+    border-radius: 5vmin;
+    cursor: pointer;
+}
+
+#post-btn:hover {
+    opacity: 0.8;
+}
+
 #error-img {
     margin-bottom: 1.5vmin;
     width: 60vmin;
 }
 
 #logout-btn {
-    margin-top: 20vmin;
     margin-left: 0.5vmin;
     background-color: #eff3f4;
-    color: #000000;
+    color: #333333;
     height: 7vmin;
     width: 30vmin;
     text-align: center;
@@ -248,4 +311,18 @@ a:hover {
     border-style: none;
     border-radius: 5vmin;
     cursor: pointer;
+}
+
+#logout-btn:hover {
+    background-color: #333333;
+    color: #e5e5e5;
+}
+
+/* extra */
+
+/* adds 'placeholder' to 'contenteditable' */
+[contenteditable=true]:empty:before{
+    content: attr(placeholder);
+    pointer-events: none;
+    display: block; /* For Firefox */
 }

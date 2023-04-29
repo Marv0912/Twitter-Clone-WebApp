@@ -7,10 +7,10 @@ HTML5, CSS3, JavaScript, MongoDB, Express, and Node.
 
 ## Screenshots
 Sign in:
-<img src="css/images/screenshot1.png" alt="signin-screen">
+<img src="" alt="signin-screen">
 
 Sign up:
-<img src="css/images/screenshot2.png" alt="signup-screen">
+<img src="" alt="signup-screen">
 
 Home Screen with Tweet:
 <img src="" alt="home-screen-tweet">
