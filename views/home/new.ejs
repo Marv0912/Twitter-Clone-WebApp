@@ -1,73 +1,10 @@
 <!DOCTYPE html>
-<<<<<<< HEAD
-    <html lang="en">
+<html lang="en">
     <%- include('./partials/head') %>
     <body>
         <%- include('./partials/header') %>
         <main>
-            <section>
-                <div class="post-align">
-                    <div class="post-container">
-                        <form  action="/tweets" method="POST">
-                            <input id="tweet-text" class="post-text" type="text" placeholder="What's happening?">
-                            <div class="post-realign">
-                                <span class="chara-count">240</span>
-                                <button id="post-btn" type="submit">Tweet</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </section>
-                    
+        
         </main>
-        <%- include('./partials/footer') %>
-=======
-<html lang="en">
-<%- include('./partials/head') %>
-
-    <body>
-        <%- include('./partials/header') %>
-
-            <main>
-                <section>
-                    <div class="post-align">
-                        <div class="post-container">
-                            <form action="/users/home/new" method="get">
-                                <input id="tweet-text" class="post-text" type="text" name="tweetText"
-                                    placeholder="What's happening?">
-                                <div class="post-realign">
-                                    <span class="chara-count">240</span>
-                                    <button id="post-btn" type="submit">Tweet</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- <script>
-                    const tweetBtn = document.querySelector('#twt-btn');
-                    tweetBtn.addEventListener('click', (event) => {
-                        event.preventDefault();
-                        const tweetText = document.querySelector('#tweet-text').value;
-                        fetch('/tweets/create', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify({ tweetText })
-                        })
-                            .then(response => response.json())
-                            .then(data => {
-                                // Update the UI with the new tweet
-                                console.log(data);
-                            })
-                            .catch(error => console.error(error));
-                    });
-                </script> -->
-            </main>
-
-            <%- include('./partials/footer') %>
->>>>>>> 8bd7af56fb8bb27032d9213a00b4ca16c022a2f6
     </body>
-
 </html>

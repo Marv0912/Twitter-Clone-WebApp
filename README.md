@@ -6,11 +6,11 @@ Our project is inspired by <a href="https://twitter.com/">Twitter</a> and our go
 HTML5, CSS3, JavaScript, MongoDB, Express, and Node.
 
 ## Screenshots
-Login Screen:
-<img src="css/images/login-screen.png" alt="login-screen">
+Sign in:
+<img src="css/images/screenshot1.png" alt="signin-screen">
 
-Home Screen:
-<img src="css/images/home-screen.png" alt="home-screen">
+Sign up:
+<img src="css/images/screenshot2.png" alt="signup-screen">
 
 Home Screen with Tweet:
 <img src="" alt="home-screen-tweet">

@@ -18,7 +18,7 @@ nav {
     color: #3c3c3c;
 }
 
-nav>div {
+nav > div {
     padding-left: 12vmin;
     height: 100vh;
     width: 50vmin;
@@ -27,7 +27,7 @@ nav>div {
     border-right: 0.1vmin solid rgb(119, 119, 119, 0.2);
 }
 
-div>img {
+div > img {
     width: 3.5vmin;
 }
 
@@ -90,7 +90,6 @@ a:hover {
     padding-left: 2vmin;
     color: #333333;
     font-size: 1.9vmin;
-    cursor: pointer;
 }
 
 .topbar-nav {
@@ -108,7 +107,7 @@ a:hover {
     font-family: inherit;
 }
 
-.login-align {
+.signin-align, .signup-align {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -116,7 +115,7 @@ a:hover {
     text-align: center;
 }
 
-.login-container {
+.signin-container, .signup-container {
     margin-top: 16.5vmin;
     background-color: #101010;
     padding: 4vmin 15vmin;
@@ -125,13 +124,13 @@ a:hover {
     border-radius: 3vmin;
 }
 
-.login-title {
-    margin-bottom: 7vmin;
+.signin-title, .signup-title {
+    margin-bottom: 6vmin;
     color: #ffffff;
     font-size: 4.5vmin;
 }
 
-.login-info {
+.signin-info, .signup-info {
     margin-bottom: 3vmin;
     background-color: #101010;
     color: #53575a;
@@ -142,55 +141,14 @@ a:hover {
     border-radius: 1vmin;
 }
 
-.post-align {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.signin-text, .signup-text {
+    margin-top: 4vmin;
+    color: #777777;
 }
 
-.post-container {
-    margin-top: 30.5vmin;
-    background-color: #ffffff;
-    padding: 4vmin 15vmin;
-    height: 30vh;
-    width: 69.5vmin;
-    border-radius: 3vmin;
-    z-index: 9;
-    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
-}
-
-.post-text {
-    margin-left: -10vmin;
-    margin-bottom: 1.25vmin;
-    background-color: transparent;
-    color: #667581;
-    height: 18vmin;
-    width: 60vmin;
-    font-size: 3vmin;
-    text-align: left;
-    border: none;
-    border-top: 0.1vmin solid rgb(119, 119, 119, 0.2);
-    border-bottom: 0.1vmin solid rgb(119, 119, 119, 0.2);
-    overflow: auto;
-    animation: fade-in 1.5s;
-}
-
-.post-text:focus {
-    outline-color: transparent;
-    outline-style: none;
-}
-
-.post-realign {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 3vmin;
-}
-
-.chara-count {
-    margin-top: 1.25vmin;
-    margin-left: 32.5vmin;
-    color: #667581;
+.signin-link, .signup-link {
+    color: #e5e5e5;
+    cursor: pointer;
 }
 
 .error-align {
@@ -223,14 +181,10 @@ a:hover {
 /* id selectors */
 
 #logo {
-    margin-top: 13vmin;
+    margin-top: 12.5vmin;
     color: #1c9bef;
+    filter: invert(46%) sepia(99%) saturate(1746%) hue-rotate(179deg) brightness(99%) contrast(90%);
     width: 4.2vmin;
-    cursor: pointer;
-}
-
-#logo:hover {
-    opacity: 0.8;
 }
 
 #twt-btn {
@@ -251,13 +205,14 @@ a:hover {
     opacity: 0.8;
 }
 
-#login-logo {
-    margin-top: 5vmin;
-    margin-bottom: 2.5vmin;
+#signin-logo, #signup-logo {
+    margin-top: 1vmin;
+    margin-bottom: 2vmin;
     width: 4.5vmin;
+    filter: invert(46%) sepia(99%) saturate(1746%) hue-rotate(179deg) brightness(99%) contrast(90%);
 }
 
-#login-btn {
+#signin-btn, #signup-btn {
     background-color: #eff3f4;
     color: #000000;
     height: 5vmin;
@@ -270,22 +225,9 @@ a:hover {
     cursor: pointer;
 }
 
-#post-btn {
-    margin-left: -1vmin;
-    background-color: #1c9bef;
-    color: #ffffff;
-    height: 5vmin;
-    width: 15vmin;
-    font-size: 2.5vmin;
-    font-weight: 700;
-    text-align: center;
-    border-style: none;
-    border-radius: 5vmin;
-    cursor: pointer;
-}
-
-#post-btn:hover {
-    opacity: 0.8;
+#signin-btn:focus, #signup-btn:focus {
+    outline-color: transparent;
+    outline-style: none;
 }
 
 #error-img {
@@ -306,12 +248,4 @@ a:hover {
     border-style: none;
     border-radius: 5vmin;
     cursor: pointer;
-}
-
-/* animation  */
-
-@keyframes fade-in {
-    0% {
-        opacity: 0;
-    }
 }
