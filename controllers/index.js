@@ -28,7 +28,7 @@ module.exports = {
                     console.error(err);
                     return res.status(500).send('Error logging in after registration');
                 }
-                res.redirect('/users/home');
+                res.redirect('/home');
             });
         });
     },
@@ -42,7 +42,7 @@ module.exports = {
             if (!user) {
                 console.error('User not found:', user);
                 console.error('Info:', info);
-                return res.redirect('/users/login');
+                return res.redirect('/login');
             }
     
             req.logIn(user, (err) => {
@@ -51,14 +51,14 @@ module.exports = {
                     return next(err);
                 }
     
-                return res.redirect('/users/home');
+                return res.redirect('/home');
             });
         })(req, res, next);
     },
 
     logout: (req, res) => {
         req.logout();
-        res.redirect('/users/login');
+        res.redirect('/login');
     }
     // Redirect the user to the home page after successful registration
     //res.redirect(`home/index/?user=${username}`);//, {tweets}

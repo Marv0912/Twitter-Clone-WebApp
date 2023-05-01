@@ -38,11 +38,11 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 
 // mount routes
-app.use('/users', indexRoutes);
-app.use('/users/home', homeRoutes);
+app.use('/', indexRoutes);
+app.use('/home', homeRoutes);
 
 app.get('/', (req, res) => {
-    res.redirect('/users/login');
+    res.redirect('/login');
 });
 
 
