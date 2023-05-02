@@ -12,8 +12,11 @@ Sign in:
 Sign up:
 <img src="https://i.imgur.com/3lEFuxZ.png" alt="signup-screen">
 
+Home Screen:
+<img src="https://i.imgur.com/gyZ7UkG.png" alt="home-screen-tweet">
+
 Home Screen with Tweet:
-<img src="https://i.imgur.com/8kkksi7.png" alt="home-screen-tweet">
+<img src="https://i.imgur.com/77mYB2t.png" alt="home-screen-tweet">
 
 ## Getting Started
 <a href="">CLICK HERE TO VISIT OUR SITE</a>
