@@ -22,7 +22,8 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }));
-app.use(flash()); //
+app.use(flash());
+
 // Passport config
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
@@ -44,7 +45,6 @@ app.use('/home', homeRoutes);
 app.get('/', (req, res) => {
     res.redirect('/login');
 });
-
 
 // tell the application to listen for requests
 app.listen(3000, () => {

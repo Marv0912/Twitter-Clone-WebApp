@@ -4,8 +4,6 @@
     box-sizing: border-box;
 }
 
-/* tag selectors */
-
 body {
     background-color: #ffffff;
     color: #000000;
@@ -41,7 +39,10 @@ a:hover {
     color: #1c9bef;
 }
 
-/* class selectors */
+textarea {
+    color: #797979;
+    font-family: system-ui;
+}
 
 .sidebar {
     position: fixed;
@@ -154,7 +155,7 @@ a:hover {
 .post-container {
     height: 18.5vmin;
     border-bottom: 0.1vmin solid rgb(119, 119, 119, 0.2);
-    z-index: 9;
+    z-index: 1;
 }
 
 .post-align {
@@ -166,15 +167,15 @@ a:hover {
 }
 
 .post-text {
-    margin-top: -5vmin;
-    margin-left: 9.5vmin;
+    margin-top: -5.5vmin;
+    margin-left: 10.5vmin;
     background-color: #ffffff;
-    color: #667581;
+    color: #797979;
     height: 7vmin;
     width: 70vmin;
     font-size: 3vmin;
     text-align: left;
-    border-radius: 1vmin;
+    border: none;
     overflow-wrap: break-word;
     overflow: auto;
 }
@@ -184,58 +185,69 @@ a:hover {
     outline-style: none;
 }
 
-.error-align {
+.tweet {
+    margin-bottom: 2.5vmin;
+    border-bottom: 0.1vmin solid rgb(119, 119, 119, 0.2);
+}
+
+.tweet-align {
+    margin-left: 2.5vmin;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    gap: 3.5vmin;
+    gap: 1vmin;
 }
 
-.error-container {
-    margin-top: 22.5vmin;
-    margin-right: 16vmin;
-    z-index: 9;
+.tweet-username {
+    margin-top: 1vmin;
+    margin-bottom: -0.75vmin;
+    font-size: 2vmin;
 }
 
-.error-message1 {
-    margin-bottom: 1.5vmin;
+.tweet-text {
+    margin-bottom: 2.25vmin;
+    color: #656565;
+    font-size: 2.5vmin;
 }
 
-.error-message2 {
-    margin-bottom: 4.5vmin;
+.twt-btn-align {
+    margin-left: 2vmin;
+    margin-bottom: 2vmin;
+    display: flex;
+    flex-direction: row;
+    align-items: left;
+    justify-content: left;
+    gap: 2vmin;
+}
+
+.tweet-edit {
+    background-color: #ffffff;
+    color: #797979;
+    height: 3vmin;
+    width: 7.5vmin;
+    border: 0.1vmin solid rgb(119, 119, 119, 0.4);
+    border-radius: 5vmin;
+    cursor: pointer;
+}
+
+.tweet-delete {
+    background-color: #ffffff;
+    color: #797979;
+    height: 3vmin;
+    width: 7.5vmin;
+    border: 0.1vmin solid rgb(119, 119, 119, 0.4);
+    border-radius: 5vmin;
+    cursor: pointer;
 }
 
 .logout-align {
     position: fixed;
 }
 
-/* id selectors */
-
 #logo {
     margin-top: 12.5vmin;
     color: #1c9bef;
     filter: invert(46%) sepia(99%) saturate(1746%) hue-rotate(179deg) brightness(99%) contrast(90%);
     width: 4.2vmin;
-}
-
-#twt-btn {
-    margin-left: 0.5vmin;
-    background-color: #1c9bef;
-    color: #ffffff;
-    height: 7vmin;
-    width: 30vmin;
-    text-align: center;
-    font-size: 2.5vmin;
-    font-weight: 700;
-    border-style: none;
-    border-radius: 5vmin;
-    cursor: pointer;
-}
-
-#twt-btn:hover {
-    opacity: 0.8;
 }
 
 #signin-logo, #signup-logo {
@@ -265,19 +277,14 @@ a:hover {
 
 #post-pic {
     margin-top: 1.5vmin;
-    margin-left: 1vmin;
+    margin-left: 2vmin;
     width: 6.5vmin;
     border-radius: 50%;
 }
 
-#post-count {
-    margin-left: -16.75vmin;
-    color: #667581;
-}
-
 #post-btn {
-    margin-top: 2vmin;
-    margin-left: 68.5vmin;
+    margin-top: 1vmin;
+    margin-left: 70vmin;
     background-color: #1c9bef;
     color: #ffffff;
     height: 5vmin;
@@ -292,11 +299,6 @@ a:hover {
 
 #post-btn:hover {
     opacity: 0.8;
-}
-
-#error-img {
-    margin-bottom: 1.5vmin;
-    width: 60vmin;
 }
 
 #logout-btn {
@@ -318,11 +320,9 @@ a:hover {
     color: #e5e5e5;
 }
 
-/* extra */
-
-/* adds 'placeholder' to 'contenteditable' */
-[contenteditable=true]:empty:before{
-    content: attr(placeholder);
-    pointer-events: none;
-    display: block; /* For Firefox */
+#tweet-feed {
+    margin-top: 2vmin;
+    color: #797979;
+    font-size: 2.5vmin;
+    z-index: 1;
 }

@@ -1,69 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('../partials/head') %>
-
     <body>
         <%- include('../partials/header') %>
-            <main>
-                <section>
-                    <div class="main-layout">
-                        <div></div>
-                        <div>
-                            <div class="topbar-home">
-                                <div class="topbar-align">
-                                    <div class="topbar-title">
-                                        <h2>Home</h2>
-                                    </div>
-                                    <div class="topbar-nav">
-                                        <a class="topbar-link" href="">For you</a>
-                                        <a class="topbar-link" href="">Following</a>
-                                        <a class="topbar-link" href="">Entertainment Writers</a>
-                                        <a class="topbar-link" href="">US Celebrities - Movies</a>
-                                    </div>
+        <main>
+            <section>
+                <div class="main-layout">
+                    <div></div>
+                    <div>
+                        <div class="topbar-home">
+                            <div class="topbar-align">
+                                <div class="topbar-title">
+                                    <h2>Home</h2>
                                 </div>
-                            </div>
-                            <div class="post-align">
-                                <div class="post-container">
-                                    <form id="tweet-form" action="/home/<%=username%>" method="POST">
-                                        <img id="post-pic"
-                                            src="https://abs.twimg.com/sticky/default_profile_images/default_profile_400x400.png"
-                                            alt="default-pic">
-                                        <textarea name="tweetText" id="" cols="30" rows="10" class="post-text"
-                                            placeholder="What's happening?"></textarea>
-                                        <button id="post-btn" type="submit">Tweet</button>
-                                        <span id="post-count">280</span>
-                                    </form>
+                                <div class="topbar-nav">
+                                    <a class="topbar-link" href="/home/index">For you</a>
+                                    <a class="topbar-link" href="/home/index">Following</a>
+                                    <a class="topbar-link" href="/home/index">Entertainment Writers</a>
+                                    <a class="topbar-link" href="/home/index">US Celebrities - Movies</a>
                                 </div>
                             </div>
                         </div>
+                        <div class="post-align">
+                            <div class="post-container">
+                                <form id="tweet-form" action="/home/<%=username%>" method="POST">
+                                    <img id="post-pic" src="https://abs.twimg.com/sticky/default_profile_images/default_profile_400x400.png" alt="default-pic">
+                                    <textarea class="post-text" name="tweetText" placeholder="What's happening?" cols="30" rows="10"></textarea>
+                                    <button id="post-btn" type="submit">Tweet</button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-                </section>
-                <div id="tweet-feed">
-                    <% if (tweets && tweets.length) { %>
-                        <% tweets.forEach(tweet=> { %>
-                            <div class="tweet">
+                </div>
+                <div class="main-layout">
+                    <div></div>
+                    <div id="tweet-feed">
+                        <% if (tweets && tweets.length) { %>
+                            <% tweets.forEach(tweet=> { %>
+                        <div class="tweet">
+                            <div class="tweet-align">
                                 <div class="tweet-username">
-                                    <%= tweet.authorUsername %>
+                                    @<%= tweet.authorUsername %>
                                 </div>
                                 <div class="tweet-text">
                                     <%= tweet.tweetText %>
                                 </div>
-                                <a href="/home/<%=tweet.authorUsername%>/edit/<%=tweet._id%>"><button class="tweet-edit">Edit</button></a> 
-                                <form action="/home/<%=tweet._id%>?_method=DELETE" method="POST">
-                                    <button class="tweet-delete">Delete</button>
-                                </form>
-                                <!-- <form action="/home/<%=tweet._id%>?_method=PUT" method="POST">
-                                    <button class="tweet-delete">Delete</button>
-                                </form> -->
-                                
-                                
-                            </div>
-                            <% }) %>
-                                <% } else { %>
-                                    <p>No tweets to display</p>
-                                    <% } %>
+                        </div>
+                        <div class="twt-btn-align">
+                            <a href="/home/<%=tweet.authorUsername%>/edit/<%=tweet._id%>"><button class="tweet-edit">Edit</button></a> 
+                            <form action="/home/<%=tweet._id%>?_method=DELETE" method="POST">
+                                <button class="tweet-delete">Delete</button>
+                            </form>
+                            <!-- <form action="/home/<%=tweet._id%>?_method=PUT" method="POST">
+                                <button class="tweet-delete">Delete</button>
+                            </form> -->
+                        </div>
+                    </div>
+                    <% }) %>
+                        <% } else { %>
+                            <p>No tweets to display</p>
+                        <% } %>
                 </div>
-            </main>
+            </section>
+        </main>
     </body>
-
 </html>
