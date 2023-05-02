@@ -8,6 +8,7 @@ const homeRoutes = require('./routes/home');
 const indexRoutes = require('./routes/index');
 const User = require('./models/User');
 const flash = require('connect-flash');
+const methodOverride = require('method-override')
 
 // initialize express application
 const app = express();
@@ -37,6 +38,7 @@ app.use(passport.session());
 app.use(logger('dev'));
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: false }));
+app.use(methodOverride('_method'))
 
 // mount routes
 app.use('/', indexRoutes);

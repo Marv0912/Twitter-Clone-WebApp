@@ -48,12 +48,9 @@
                         </div>
                         <div class="twt-btn-align">
                             <a href="/home/<%=tweet.authorUsername%>/edit/<%=tweet._id%>"><button class="tweet-edit">Edit</button></a> 
-                            <form action="/home/<%=tweet._id%>?_method=DELETE" method="POST">
-                                <button class="tweet-delete">Delete</button>
+                            <form action="/home/<%= username %>/<%=tweet._id%>?_method=DELETE" method="POST">
+                                <button class="tweet-delete" type="submit">Delete</button>
                             </form>
-                            <!-- <form action="/home/<%=tweet._id%>?_method=PUT" method="POST">
-                                <button class="tweet-delete">Delete</button>
-                            </form> -->
                         </div>
                     </div>
                     <% }) %>
