@@ -4,7 +4,9 @@ const createTweet = require('./home')
 
 exports.renderHome = async (req, res, tweets) => {
     try {
-        res.render('home/index', { tweets });
+        console.log(req.params);
+        const tweets = await Tweet.find({})
+        res.render('home/index', { tweets, username: req.params.username });
     } catch (error) {
         console.error(error);
         res.status(500).send('Error fetching tweets');

@@ -14,11 +14,10 @@ const tweetSchema = new Schema({
         ref: 'User',
         required: true
     },
-    tweetId: { type: mongoose.ObjectId },
-    userId: {
-        type: mongoose.ObjectId,
-        required: true
+    authorUsername: {
+        type: String,
     },
+    tweetId: { type: mongoose.ObjectId },
     likes: [
         {
             type: mongoose.Schema.Types.ObjectId,

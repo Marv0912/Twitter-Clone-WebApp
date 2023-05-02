@@ -28,7 +28,7 @@ module.exports = {
                     console.error(err);
                     return res.status(500).send('Error logging in after registration');
                 }
-                res.redirect('/home');
+                return res.redirect(`/home/${username}`);
             });
         });
     },
@@ -51,7 +51,7 @@ module.exports = {
                     return next(err);
                 }
     
-                return res.redirect('/home');
+                return res.redirect(`/home/${req.body.username}`);
             });
         })(req, res, next);
     },

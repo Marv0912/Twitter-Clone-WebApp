@@ -24,7 +24,7 @@
                             </div>
                             <div class="post-align">
                                 <div class="post-container">
-                                    <form id="tweet-form" action="/home" method="POST">
+                                    <form id="tweet-form" action="/home/<%=username%>" method="POST">
                                         <img id="post-pic"
                                             src="https://abs.twimg.com/sticky/default_profile_images/default_profile_400x400.png"
                                             alt="default-pic">
@@ -43,13 +43,20 @@
                         <% tweets.forEach(tweet=> { %>
                             <div class="tweet">
                                 <div class="tweet-username">
-                                    <%= tweet.author.username %>
+                                    <%= tweet.authorUsername %>
                                 </div>
                                 <div class="tweet-text">
                                     <%= tweet.tweetText %>
                                 </div>
-                                <button class="tweet-edit">Edit</button>
-                                <button class="tweet-delete">Delete</button>
+                                <a href="/home/<%=tweet.authorUsername%>/edit/<%=tweet._id%>"><button class="tweet-edit">Edit</button></a> 
+                                <form action="/home/<%=tweet._id%>?_method=DELETE" method="POST">
+                                    <button class="tweet-delete">Delete</button>
+                                </form>
+                                <!-- <form action="/home/<%=tweet._id%>?_method=PUT" method="POST">
+                                    <button class="tweet-delete">Delete</button>
+                                </form> -->
+                                
+                                
                             </div>
                             <% }) %>
                                 <% } else { %>

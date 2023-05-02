@@ -1,61 +1,29 @@
 const express = require('express');
 const router = express.Router();
-const tweet = require('../models/Tweet'); // Import the Mongoose model for tweets
-const user = require('../models/User'); // Import the Mongoose model for users
-
-// const displayTweets = async (req, res) => {
-//     try {
-//         // console.log(req.user);
-//         // tweet.find({}).then(function(allTweets) {
-//         //     res.render('home/index', 
-//         //     { tweets: allTweets})
-//         // });
-//         // if (!user) {
-//             //     // If the user is not logged in, redirect to the login page
-//             //     return res.redirect('/');
-//             //}
-            
-//         // const user = req.user; // Get the currently logged-in user from the request object (if available)
-//         //const following = user.following; // Get the user's list of following users
-//         // const tweets = await tweet
-//         //     .find({ userId: { $in: following } })
-//         //     .populate('userId')
-//         //     .sort({ createdAt: -1 }); // Find tweets posted by users the current user is following, sort by most recent
-//         // const userIds = [...user.following, user._id]; // Include user's ID to the list of users ID
-
-//         // Render the home page EJS template and pass in the tweets and user objects
-//         res.render('home/index', { tweets: 'tweet1' });
-
-//     } catch (err) {
-//         console.error(err);
-//         res.status(500).send('Server error');
-//     }
-// };
+const Tweet = require('../models/Tweet'); // Import the Mongoose model for tweets
+const User = require('../models/User'); // Import the Mongoose model for users
 
 const createTweet = async (req, res) => {
     try {
         const { tweetText } = req.body;
-        const author = req.user.id;
-
         // Find the user object for the logged-in user
-        const user = await User.findById(author);
-
+        const user = await User.findOne({username: req.params.username});
+        console.log(req.params);
+        // if (!user) {
+        //     throw new Error('User not found');
+        // }
+        console.log(user);
         // Create a new tweet object with the populated author field
         const tweet = new Tweet({
             tweetText: tweetText,
-            author: {
-                _id: user._id,
-                username: user.username,
-            },
-            userId: author,
+            author: user._id,
+            authorUsername: user.username,
         });
-
+        console.log('tweet.author:', tweet.author);
         await tweet.save();
         console.log('tweet created');
 
-        const tweets = await Tweet.find().populate('author', 'username', 'tweetText');
-        // Render the home/index view with the tweets
-        res.render('home/index', { tweets });
+        res.redirect(`/home/${user.username}`);
     } catch (err) {
         console.error(err);
         res.status(500).send('Server error');
@@ -184,7 +152,6 @@ const tweetLikes = async (req, res) => {
 // }
 
 module.exports = {
-    //displayTweets,
     createTweet,
     tweetLikes,
     // followUser,

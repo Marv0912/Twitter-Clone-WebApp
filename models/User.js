@@ -10,9 +10,6 @@ const userSchema = new Schema({
         required: true,
         unique: true
     },
-    userId: {
-        type: mongoose.ObjectId,
-    },
     password: {
         type: String,
         required: true,

@@ -35,7 +35,7 @@ app.use(passport.session());
 // mount middlware
 app.use(logger('dev'));
 app.use(express.static('public'));
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 
 // mount routes
 app.use('/', indexRoutes);
